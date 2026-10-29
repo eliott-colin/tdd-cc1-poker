@@ -80,4 +80,18 @@ describe('scoreHand', () => {
       expect(scoreHand(hand)).toBe(30);
     });
   });
+
+  describe('suite', () => {
+    it('vaut 40 points pour cinq valeurs consécutives', () => {
+      const hand: Hand = [
+        card(5, 'clubs'),
+        card(6, 'diamonds'),
+        card(7, 'hearts'),
+        card(8, 'spades'),
+        card(9, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(40);
+    });
+  });
 });
