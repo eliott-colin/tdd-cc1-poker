@@ -1,5 +1,6 @@
 import type { CardValue, Hand } from './card';
 
+const STRAIGHT_FLUSH_POINTS = 80;
 const FOUR_OF_A_KIND_POINTS = 60;
 const FULL_HOUSE_POINTS = 50;
 const FLUSH_POINTS = 45;
@@ -7,6 +8,9 @@ const STRAIGHT_POINTS = 40;
 const THREE_OF_A_KIND_POINTS = 30;
 
 export function scoreHand(hand: Hand): number {
+  if (isStraightFlush(hand)) {
+    return STRAIGHT_FLUSH_POINTS;
+  }
   if (isFourOfAKind(hand)) {
     return FOUR_OF_A_KIND_POINTS;
   }
@@ -23,6 +27,10 @@ export function scoreHand(hand: Hand): number {
     return THREE_OF_A_KIND_POINTS;
   }
   return highestCardValue(hand);
+}
+
+function isStraightFlush(hand: Hand): boolean {
+  return isStraight(hand) && isFlush(hand);
 }
 
 function isFourOfAKind(hand: Hand): boolean {
