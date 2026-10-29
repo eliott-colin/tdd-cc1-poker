@@ -193,5 +193,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(50);
     });
+
+    it('détecte un full dont la paire est plus haute que le brelan', () => {
+      const hand: Hand = [
+        card(4, 'clubs'),
+        card(4, 'diamonds'),
+        card(4, 'spades'),
+        card(JACK, 'hearts'),
+        card(JACK, 'diamonds'),
+      ];
+
+      expect(scoreHand(hand)).toBe(50);
+    });
   });
 });
