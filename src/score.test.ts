@@ -220,4 +220,18 @@ describe('scoreHand', () => {
       expect(scoreHand(hand)).toBe(60);
     });
   });
+
+  describe('quinte flush', () => {
+    it('vaut 80 points pour une suite de la même enseigne', () => {
+      const hand: Hand = [
+        card(5, 'hearts'),
+        card(6, 'hearts'),
+        card(7, 'hearts'),
+        card(8, 'hearts'),
+        card(9, 'hearts'),
+      ];
+
+      expect(scoreHand(hand)).toBe(80);
+    });
+  });
 });
