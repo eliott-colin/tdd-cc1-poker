@@ -1,9 +1,13 @@
 import type { CardValue, Hand } from './card';
 
+const FLUSH_POINTS = 45;
 const STRAIGHT_POINTS = 40;
 const THREE_OF_A_KIND_POINTS = 30;
 
 export function scoreHand(hand: Hand): number {
+  if (isFlush(hand)) {
+    return FLUSH_POINTS;
+  }
   if (isStraight(hand)) {
     return STRAIGHT_POINTS;
   }
@@ -11,6 +15,10 @@ export function scoreHand(hand: Hand): number {
     return THREE_OF_A_KIND_POINTS;
   }
   return highestCardValue(hand);
+}
+
+function isFlush(hand: Hand): boolean {
+  return hand.every((card) => card.suit === hand[0].suit);
 }
 
 function isStraight(hand: Hand): boolean {
