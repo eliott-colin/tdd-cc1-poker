@@ -1,10 +1,14 @@
 import type { CardValue, Hand } from './card';
 
+const FULL_HOUSE_POINTS = 50;
 const FLUSH_POINTS = 45;
 const STRAIGHT_POINTS = 40;
 const THREE_OF_A_KIND_POINTS = 30;
 
 export function scoreHand(hand: Hand): number {
+  if (isFullHouse(hand)) {
+    return FULL_HOUSE_POINTS;
+  }
   if (isFlush(hand)) {
     return FLUSH_POINTS;
   }
@@ -15,6 +19,11 @@ export function scoreHand(hand: Hand): number {
     return THREE_OF_A_KIND_POINTS;
   }
   return highestCardValue(hand);
+}
+
+function isFullHouse(hand: Hand): boolean {
+  const [largestGroup, secondGroup] = cardCountsByValue(hand);
+  return largestGroup === 3 && secondGroup === 2;
 }
 
 function isFlush(hand: Hand): boolean {
