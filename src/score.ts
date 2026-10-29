@@ -1,5 +1,9 @@
-import type { Card, Hand } from './card';
+import type { Hand } from './card';
 
 export function scoreHand(hand: Hand): number {
-  return 13;
+  return highestCardValue(hand);
+}
+
+function highestCardValue(hand:Hand): number{
+    return Math.max(...hand.map((card)=> card.value))
 }
