@@ -93,5 +93,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(40);
     });
+
+    it('détecte une suite dont les cartes sont dans le désordre', () => {
+      const hand: Hand = [
+        card(9, 'clubs'),
+        card(5, 'clubs'),
+        card(7, 'hearts'),
+        card(6, 'diamonds'),
+        card(8, 'spades'),
+      ];
+
+      expect(scoreHand(hand)).toBe(40);
+    });
   });
 });
