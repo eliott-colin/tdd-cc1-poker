@@ -233,5 +233,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(80);
     });
+
+    it('détecte une quinte flush terminée par l\'As', () => {
+      const hand: Hand = [
+        card(10, 'spades'),
+        card(JACK, 'spades'),
+        card(QUEEN, 'spades'),
+        card(KING, 'spades'),
+        card(ACE, 'spades'),
+      ];
+
+      expect(scoreHand(hand)).toBe(80);
+    });
   });
 });
