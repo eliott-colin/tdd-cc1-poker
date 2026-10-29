@@ -129,5 +129,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(14);
     });
+
+    it('ne compte pas une main avec un trou comme une suite', () => {
+      const hand: Hand = [
+        card(5, 'clubs'),
+        card(6, 'diamonds'),
+        card(7, 'hearts'),
+        card(8, 'spades'),
+        card(10, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(10);
+    });
   });
 });
