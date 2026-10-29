@@ -17,5 +17,15 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(13);
     });
+    it('vaut 10 quabd la carte la plus haute est un 10', () => {
+        const hand :Hand = [
+            card(2,'hearts'),
+            card(4,'clubs'),
+            card(6,'diamonds'),
+            card(8,'spades'),
+            card(10,'hearts')
+        ]
+        expect(scoreHand(hand)).toBe(10);
+      });
+    });
   });
-});
