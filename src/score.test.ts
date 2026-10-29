@@ -105,5 +105,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(40);
     });
+
+    it('détecte une suite terminée par l\'As', () => {
+      const hand: Hand = [
+        card(10, 'diamonds'),
+        card(JACK, 'clubs'),
+        card(QUEEN, 'hearts'),
+        card(KING, 'spades'),
+        card(ACE, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(40);
+    });
   });
 });
