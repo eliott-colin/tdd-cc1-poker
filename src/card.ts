@@ -8,8 +8,8 @@ export const KING: CardValue = 13;
 export const ACE: CardValue = 14;
 
 export interface Card {
-  value: CardValue;
-  suit: Suit;
+  readonly value: CardValue;
+  readonly suit: Suit;
 }
 
-export type Hand = [Card, Card, Card, Card, Card];
+export type Hand = readonly [Card, Card, Card, Card, Card];
