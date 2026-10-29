@@ -66,4 +66,18 @@ describe('scoreHand', () => {
       expect(scoreHand(hand)).toBe(13);
     });
   });
+
+  describe('brelan', () => {
+    it('vaut 30 points pour trois cartes de même valeur', () => {
+      const hand: Hand = [
+        card(4, 'clubs'),
+        card(4, 'diamonds'),
+        card(4, 'spades'),
+        card(9, 'hearts'),
+        card(KING, 'diamonds'),
+      ];
+
+      expect(scoreHand(hand)).toBe(30);
+    });
+  });
 });
