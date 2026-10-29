@@ -141,5 +141,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(10);
     });
+
+    it('ne compte pas une main avec une paire couvrant cinq valeurs comme une suite', () => {
+      const hand: Hand = [
+        card(5, 'clubs'),
+        card(6, 'diamonds'),
+        card(7, 'hearts'),
+        card(9, 'spades'),
+        card(9, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(9);
+    });
   });
 });
