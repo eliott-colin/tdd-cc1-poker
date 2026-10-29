@@ -180,4 +180,18 @@ describe('scoreHand', () => {
       expect(scoreHand(hand)).toBe(13);
     });
   });
+
+  describe('full', () => {
+    it('vaut 50 points pour un brelan et une paire plutôt que 30 pour le brelan', () => {
+      const hand: Hand = [
+        card(2, 'hearts'),
+        card(2, 'spades'),
+        card(2, 'diamonds'),
+        card(9, 'clubs'),
+        card(9, 'spades'),
+      ];
+
+      expect(scoreHand(hand)).toBe(50);
+    });
+  });
 });
