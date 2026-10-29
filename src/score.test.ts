@@ -245,5 +245,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(80);
     });
+
+    it('compte A-2-3-4-5 de la même enseigne comme une couleur', () => {
+      const hand: Hand = [
+        card(ACE, 'hearts'),
+        card(2, 'hearts'),
+        card(3, 'hearts'),
+        card(4, 'hearts'),
+        card(5, 'hearts'),
+      ];
+
+      expect(scoreHand(hand)).toBe(45);
+    });
   });
 });
