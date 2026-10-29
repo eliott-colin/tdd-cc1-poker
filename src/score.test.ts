@@ -167,5 +167,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(45);
     });
+
+    it('ne compte pas quatre cartes de la même enseigne comme une couleur', () => {
+      const hand: Hand = [
+        card(2, 'hearts'),
+        card(7, 'hearts'),
+        card(9, 'hearts'),
+        card(JACK, 'hearts'),
+        card(KING, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(13);
+    });
   });
 });
