@@ -117,5 +117,17 @@ describe('scoreHand', () => {
 
       expect(scoreHand(hand)).toBe(40);
     });
+
+    it('ne compte pas A-2-3-4-5 comme une suite', () => {
+      const hand: Hand = [
+        card(ACE, 'clubs'),
+        card(2, 'diamonds'),
+        card(3, 'hearts'),
+        card(4, 'spades'),
+        card(5, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(14);
+    });
   });
 });
