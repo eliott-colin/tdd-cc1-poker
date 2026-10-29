@@ -154,4 +154,18 @@ describe('scoreHand', () => {
       expect(scoreHand(hand)).toBe(9);
     });
   });
+
+  describe('couleur', () => {
+    it('vaut 45 points pour cinq cartes de la même enseigne', () => {
+      const hand: Hand = [
+        card(2, 'hearts'),
+        card(7, 'hearts'),
+        card(9, 'hearts'),
+        card(JACK, 'hearts'),
+        card(KING, 'hearts'),
+      ];
+
+      expect(scoreHand(hand)).toBe(45);
+    });
+  });
 });
