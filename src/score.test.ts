@@ -206,4 +206,18 @@ describe('scoreHand', () => {
       expect(scoreHand(hand)).toBe(50);
     });
   });
+
+  describe('carré', () => {
+    it('vaut 60 points pour quatre cartes de même valeur', () => {
+      const hand: Hand = [
+        card(7, 'hearts'),
+        card(7, 'clubs'),
+        card(7, 'diamonds'),
+        card(7, 'spades'),
+        card(KING, 'clubs'),
+      ];
+
+      expect(scoreHand(hand)).toBe(60);
+    });
+  });
 });
