@@ -1,11 +1,15 @@
 import type { CardValue, Hand } from './card';
 
+const FOUR_OF_A_KIND_POINTS = 60;
 const FULL_HOUSE_POINTS = 50;
 const FLUSH_POINTS = 45;
 const STRAIGHT_POINTS = 40;
 const THREE_OF_A_KIND_POINTS = 30;
 
 export function scoreHand(hand: Hand): number {
+  if (isFourOfAKind(hand)) {
+    return FOUR_OF_A_KIND_POINTS;
+  }
   if (isFullHouse(hand)) {
     return FULL_HOUSE_POINTS;
   }
@@ -19,6 +23,10 @@ export function scoreHand(hand: Hand): number {
     return THREE_OF_A_KIND_POINTS;
   }
   return highestCardValue(hand);
+}
+
+function isFourOfAKind(hand: Hand): boolean {
+  return cardCountsByValue(hand)[0] === 4;
 }
 
 function isFullHouse(hand: Hand): boolean {
