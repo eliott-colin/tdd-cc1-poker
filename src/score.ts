@@ -1,4 +1,4 @@
-import type { Hand } from './card';
+import type { CardValue, Hand } from './card';
 
 const THREE_OF_A_KIND_POINTS = 30;
 
@@ -10,7 +10,13 @@ export function scoreHand(hand: Hand): number {
 }
 
 function isThreeOfAKind(hand: Hand): boolean {
-  return hand.some((card) => hand.filter((other) => other.value === card.value).length === 3);
+  return cardCountsByValue(hand)[0] === 3;
+}
+
+function cardCountsByValue(hand: Hand): number[] {
+  const counts = new Map<CardValue, number>();
+  hand.forEach((card) => counts.set(card.value, (counts.get(card.value) ?? 0) + 1));
+  return [...counts.values()].sort((a, b) => b - a);
 }
 
 function highestCardValue(hand: Hand): number {
