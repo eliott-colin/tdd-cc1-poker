@@ -1,12 +1,24 @@
 import type { CardValue, Hand } from './card';
 
+const STRAIGHT_POINTS = 40;
 const THREE_OF_A_KIND_POINTS = 30;
 
 export function scoreHand(hand: Hand): number {
+  if (isStraight(hand)) {
+    return STRAIGHT_POINTS;
+  }
   if (isThreeOfAKind(hand)) {
     return THREE_OF_A_KIND_POINTS;
   }
   return highestCardValue(hand);
+}
+
+function isStraight(hand: Hand): boolean {
+  return sortedValues(hand).every((value, index, values) => index === 0 || value === values[index - 1] + 1);
+}
+
+function sortedValues(hand: Hand): number[] {
+  return hand.map((card) => card.value).sort((a, b) => a - b);
 }
 
 function isThreeOfAKind(hand: Hand): boolean {
