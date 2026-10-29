@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACE, KING, QUEEN, type Card, type CardValue, type Hand, type Suit } from './card';
+import { ACE, JACK, KING, QUEEN, type Card, type CardValue, type Hand, type Suit } from './card';
 import { scoreHand } from './score';
 
 const card = (value: CardValue, suit: Suit): Card => ({ value, suit });
@@ -40,6 +40,30 @@ describe('scoreHand', () => {
       ];
 
       expect(scoreHand(hand)).toBe(14);
+    });
+
+    it('ignore une paire et retient la carte la plus haute', () => {
+      const hand: Hand = [
+        card(5, 'hearts'),
+        card(5, 'clubs'),
+        card(9, 'diamonds'),
+        card(JACK, 'spades'),
+        card(KING, 'hearts'),
+      ];
+
+      expect(scoreHand(hand)).toBe(13);
+    });
+
+    it('ignore une double paire et retient la carte la plus haute', () => {
+      const hand: Hand = [
+        card(5, 'hearts'),
+        card(5, 'clubs'),
+        card(9, 'diamonds'),
+        card(9, 'spades'),
+        card(KING, 'hearts'),
+      ];
+
+      expect(scoreHand(hand)).toBe(13);
     });
   });
 });
